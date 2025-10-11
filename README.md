@@ -31,6 +31,10 @@ docker run
 
 #Port Binding...
 
+![alt text](docker-port.png)
+
+docker run -d -p 8000:3306 --name mymysql -e MYSQL_ROOT_PASSWORD=yourpassword mysql:latest
 
 
 host mechine port with docker image port
+
