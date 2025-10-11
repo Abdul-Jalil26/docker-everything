@@ -10,3 +10,27 @@ it's an executable file holds the instruction to build a container
 
 
 ![alt text](image.png)
+
+The relation between docker image and container like the class and object.
+inside a class there are objects similarly docker image is a executable file inside it there's docker images.
+
+
+1) docker run -it ubuntu
+
+it's like virtual machine but it's lightweight
+
+
+#command---
+
+docker ps 
+docker ps -a
+docker start 
+docker stop
+docker run
+
+
+#Port Binding...
+
+
+
+host mechine port with docker image port
