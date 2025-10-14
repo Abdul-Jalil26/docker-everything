@@ -159,3 +159,51 @@ docker compose -f mongodb.yaml up -d
 #dockerazing our own application
 
 ![alt text](dockerization.png)
+
+
+Build the app's image
+To build the image, you'll need to use a Dockerfile. A Dockerfile is simply a text-based file with no file extension that contains a script of instructions. Docker uses this script to build a container image.
+
+In the getting-started-app directory, the same location as the package.json file, create a file named Dockerfile with the following contents:
+
+
+# syntax=docker/dockerfile:1
+
+FROM node:lts-alpine
+WORKDIR /app
+COPY . .
+RUN yarn install --production
+CMD ["node", "src/index.js"]
+EXPOSE 3000
+This Dockerfile starts off with a node:lts-alpine base image, a light-weight Linux image that comes with Node.js and the Yarn package manager pre-installed. It copies all of the source code into the image, installs the necessary dependencies, and starts the application.
+
+Build the image using the following commands:
+
+In the terminal, make sure you're in the getting-started-app directory. Replace /path/to/getting-started-app with the path to your getting-started-app directory.
+
+
+ cd /path/to/getting-started-app
+Build the image.
+
+
+ docker build -t getting-started .
+The docker build command uses the Dockerfile to build a new image. You might have noticed that Docker downloaded a lot of "layers". This is because you instructed the builder that you wanted to start from the node:lts-alpine image. But, since you didn't have that on your machine, Docker needed to download the image.
+
+After Docker downloaded the image, the instructions from the Dockerfile copied in your application and used yarn to install your application's dependencies. The CMD directive specifies the default command to run when starting a container from this image.
+
+Finally, the -t flag tags your image. Think of this as a human-readable name for the final image. Since you named the image getting-started, you can refer to that image when you run a container.
+
+The . at the end of the docker build command tells Docker that it should look for the Dockerfile in the current directory.
+
+
+FROM node:lts-alpine → base layer (tiny Linux + Node.js).
+
+WORKDIR /app → new layer (working directory set).
+
+COPY . . → another layer (your code added).
+
+RUN yarn install --production → new layer (dependencies installed).
+
+CMD ["node", "src/index.js"] → final instruction (what to run).
+
+EXPOSE 3000 → metadata layer (which port the app uses).
