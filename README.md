@@ -207,3 +207,5 @@ RUN yarn install --production → new layer (dependencies installed).
 CMD ["node", "src/index.js"] → final instruction (what to run).
 
 EXPOSE 3000 → metadata layer (which port the app uses).
+
+docker build -t projectname:1.0
