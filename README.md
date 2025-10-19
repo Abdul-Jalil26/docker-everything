@@ -209,3 +209,9 @@ CMD ["node", "src/index.js"] → final instruction (what to run).
 EXPOSE 3000 → metadata layer (which port the app uses).
 
 docker build -t projectname:1.0
+
+
+#Docker Volume
+
+Volumes are persistent data stores for containers
+
