@@ -215,3 +215,26 @@ docker build -t projectname:1.0
 
 Volumes are persistent data stores for containers
 
+
+# you can create custom volume
+
+docker volume create volume-name.
+
+docker volume rm volume-name
+
+# Docker Volume
+
+1) Name volumes
+
+docker run -v VOL_Name:CONT_DIR
+
+2) Anonymous volumes
+
+docker run -v MOUNT_PATH
+
+3) Blind Mount
+
+docker run -v HOST_DIR:CONT_DIR
+
+docker volume prune
+
