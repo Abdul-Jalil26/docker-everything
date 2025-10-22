@@ -238,3 +238,33 @@ docker run -v HOST_DIR:CONT_DIR
 
 docker volume prune
 
+# Docker Networking
+
+it's all about how docker is interacting with outside world.
+
+
+
+Docker Networks
+
+Bridge (default)
+
+Default network for containers.
+
+Containers can talk to each other via container names.
+
+Accessible from the host through port mapping (e.g., -p 8080:80).
+✅ Best for most app setups.
+
+Host
+
+Shares the host’s network stack — no port mapping needed.
+
+The container uses the same IP and ports as your computer.
+ Less isolation, can cause port conflicts.
+
+None (null)
+
+No network access at all.
+
+Used for secure or testing environments where isolation is needed.
+❌ The container cannot connect to the internet or other containers.
